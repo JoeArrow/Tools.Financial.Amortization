@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools.Financial.Amortization", "Tools.Financial.Amortization\Tools.Financial.Amortization.csproj", "{38673BA1-1171-46A7-8178-7224FAA92748}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools.Financial.Amortization.Test", "Tools.Financial.Amortization.Test\Tools.Financial.Amortization.Test.csproj", "{5E11D176-9791-4F22-A00C-7E18AEAC46D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38673BA1-1171-46A7-8178-7224FAA92748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38673BA1-1171-46A7-8178-7224FAA92748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38673BA1-1171-46A7-8178-7224FAA92748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38673BA1-1171-46A7-8178-7224FAA92748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E11D176-9791-4F22-A00C-7E18AEAC46D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E11D176-9791-4F22-A00C-7E18AEAC46D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E11D176-9791-4F22-A00C-7E18AEAC46D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E11D176-9791-4F22-A00C-7E18AEAC46D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B50A9DD-371C-4214-9DEC-FA30F9305C0C}
+	EndGlobalSection
+EndGlobal
