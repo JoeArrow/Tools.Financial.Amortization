@@ -20,6 +20,22 @@ namespace Tools.Financial.Amortization
     public class CalculateAmortizationResponse
     {
         public ObservableCollection<PaymentDetail> PaymentDetails { set; get; }
+        public decimal TotalRepayment
+        {
+            get
+            {
+                var retVal = 0M;
+
+                foreach(var detail in PaymentDetails)
+                {
+                    retVal += Convert.ToDecimal(detail.Payment);
+                }
+
+                return retVal;
+            }
+        }
+
+        // ------------------------------------------------
 
         public CalculateAmortizationResponse()
         {
@@ -30,6 +46,7 @@ namespace Tools.Financial.Amortization
 
         public string ToLog()
         {
+            var cr = $"{Environment.NewLine}";
             var crt = $"{Environment.NewLine}\t";
             var retVal = new StringBuilder();
 
@@ -37,6 +54,8 @@ namespace Tools.Financial.Amortization
             {
                 retVal.Append($"{detail.ToLog()}{crt}");
             }
+
+            retVal.Append($"{cr}Totap Repayment:{crt}{TotalRepayment}");
 
             return retVal.ToString();
         }

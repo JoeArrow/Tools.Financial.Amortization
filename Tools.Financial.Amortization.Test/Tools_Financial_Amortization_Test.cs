@@ -59,6 +59,9 @@ namespace Tools.Financial.Amortization.Test
         [TestMethod]
         [DataRow("{'AnnualTax':600,'LoanAmount':10000,'DownPayment':500," +
                   "'InterestRate':0.074,'NumberOfPayments':60,'AnnualInsurancePmt':250}", 260.74D)]
+
+        [DataRow("{'AnnualTax':600,'LoanAmount':10000,'DownPayment':500," +
+                  "'InterestRate':7.4,'NumberOfPayments':60,'AnnualInsurancePmt':250}", 260.74D)]
         public void CalculatePayment_AmortSvc_Returns_The_Expected_Payment_Amount(string reqJson, double exp)
         {
             // -------
@@ -96,6 +99,10 @@ namespace Tools.Financial.Amortization.Test
                   "'LoanAmount':10000,'DownPayment':500,'InterestRate':0.074," +
                   "'NumberOfPayments':60,'AnnualInsurancePmt':250}", 19)]
 
+        [DataRow("{'AlternatePaymentAmt':1000,'AlternatePaymentNo':10,'AnnualTax':600," +
+                  "'LoanAmount':10000,'DownPayment':500,'InterestRate':7.4," +
+                  "'NumberOfPayments':60,'AnnualInsurancePmt':250}", 19)]
+
         [DataRow("{'AlternatePaymentAmt':0,'AlternatePaymentNo':0,'AnnualTax':600," +
                   "'LoanAmount':10000,'DownPayment':500,'InterestRate':0.074," +
                   "'NumberOfPayments':60,'AnnualInsurancePmt':250}", 60)]
@@ -126,7 +133,7 @@ namespace Tools.Financial.Amortization.Test
             // ------
             // Assert
 
-            Assert.AreEqual(expected, resp.PaymentDetails.Count);
+            Assert.AreEqual(expected, resp.PaymentDetails.Count, "Expected Payment Count");
         }
     }
 }
