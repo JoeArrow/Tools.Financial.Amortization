@@ -6,6 +6,8 @@
 //
 #endregion
 
+using System;
+using System.Text;
 using System.Collections.ObjectModel;
 
 namespace Tools.Financial.Amortization
@@ -22,6 +24,21 @@ namespace Tools.Financial.Amortization
         public CalculateAmortizationResponse()
         {
             PaymentDetails = new ObservableCollection<PaymentDetail>();
+        }
+
+        // ------------------------------------------------
+
+        public string ToLog()
+        {
+            var crt = $"{Environment.NewLine}\t";
+            var retVal = new StringBuilder();
+
+            foreach(var detail in PaymentDetails)
+            {
+                retVal.Append($"{detail.ToLog()}{crt}");
+            }
+
+            return retVal.ToString();
         }
     }
 }

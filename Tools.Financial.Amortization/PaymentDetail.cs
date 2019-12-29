@@ -6,6 +6,8 @@
 //
 #endregion
 
+using System;
+
 namespace Tools.Financial.Amortization
 {
     // ----------------------------------------------------
@@ -34,6 +36,14 @@ namespace Tools.Financial.Amortization
             PaymentNo = 0;
             Insurance = 0d;
             Principle = 0d;
+        }
+
+        // ------------------------------------------------
+
+        public string ToLog()
+        {
+            var cr = Environment.NewLine;
+            return $"{PaymentNo}, {Payment}, {Principle}, {Interest}, {Insurance}, {Tax}, {Balance}";
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Tools.Financial.Amortization.Test
 
         [TestMethod]
         [DataRow("{'AnnualTax':600,'LoanAmount':10000,'DownPayment':500," +
-                  "'InterestRate':0.07400000000000001,'NumberOfPayments':60,'AnnualInsurancePmt':250}", 260.74D)]
+                  "'InterestRate':0.074,'NumberOfPayments':60,'AnnualInsurancePmt':250}", 260.74D)]
         public void CalculatePayment_AmortSvc_Returns_The_Expected_Payment_Amount(string reqJson, double exp)
         {
             // -------
@@ -93,32 +93,40 @@ namespace Tools.Financial.Amortization.Test
 
         [TestMethod]
         [DataRow("{'AlternatePaymentAmt':1000,'AlternatePaymentNo':10,'AnnualTax':600," +
-                  "'LoanAmount':10000,'DownPayment':500,'InterestRate':0.07400000000000001," +
-                  "'NumberOfPayments':60,'AnnualInsurancePmt':250}", 100)]
-        public void CalculateAmortization_AmortSvc_Returns_The_Expected_Amortization_Schedule(string expected, int payments)
+                  "'LoanAmount':10000,'DownPayment':500,'InterestRate':0.074," +
+                  "'NumberOfPayments':60,'AnnualInsurancePmt':250}", 19)]
+
+        [DataRow("{'AlternatePaymentAmt':0,'AlternatePaymentNo':0,'AnnualTax':600," +
+                  "'LoanAmount':10000,'DownPayment':500,'InterestRate':0.074," +
+                  "'NumberOfPayments':60,'AnnualInsurancePmt':250}", 60)]
+        public void CalculateAmortization_AmortSvc_Returns_The_Expected_Amortization_Schedule(string reqJson, int expected)
         {
             // -------
             // Arrange
 
             var sut = new AmortSvc();
+            var req = m_ser.Deserialize<CalculateAmortizationRequest>(reqJson);
 
             // ---
             // Log
 
-            Console.WriteLine($"{cr}");
+            Console.WriteLine($"Request:{crt}{reqJson}{cr}Expected Number of Payments:{crt}{expected}{cr}");
 
             // ---
             // Act
 
+            var resp = sut.CalculateAmortization(req);
+
             // ---
             // Log
 
-            Console.WriteLine($"{crt}");
+            Console.WriteLine($"Response:{crt}{resp.PaymentDetails.Count}{cr}");
+            Console.WriteLine($"Payment Details:{crt}{resp.ToLog()}{crt}");
 
             // ------
             // Assert
 
-            Assert.Inconclusive("Not yet Implemented");
+            Assert.AreEqual(expected, resp.PaymentDetails.Count);
         }
     }
 }
